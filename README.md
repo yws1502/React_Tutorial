@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+리액트는 유저 인터페이스를 만드는 자바스크립트 라이브러리
 
-## Available Scripts
+## 리액트 사용이유
+- 유저 인터페이스를 만드는 과정을 단순화해주기 때문
+- 앱을 구성하는 중요한 비즈니스 로직에 집중할 수 있다.
+  - 어떤 일이 발생했을 때, 업데이트하는 과정에 집중할 필요가 없다.
+- 작업을 단순화하기 위해 리액트에 컴포넌트를 사용한다.
 
-In the project directory, you can run:
+## Components and Props
 
-### `npm start`
+작은 빌딩 블록을 모아 사용자 인터페이스를 만드는 것 -> 컴포지션이라 한다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> 특수 props
+> children -> 컴포넌트의 하위 컴포넌트들을 받아 적용한다.
+> 
+> className -> Component에 적용된 className을 받아온다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### JSX
+**개발자가 읽기 쉽고 이해하기 편한 문법, 결국은 뒤에서 js코드로 변환하는 작업을 거친다.**
 
-### `npm test`
+```jsx
+<div>
+  <h2>Let's get started!</h2>
+  <Expenses items={expenses} />
+</div>
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+만약 jsx가 없다면( 위와 같은 코드 )
+```js
+React.createElement(
+  "div",
+  {},
+  React.createElement("h2", {}, "Let's get started!"),
+  React.createElement(Expenses, {items: expenses})
+  );
+```
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+jsx에서 상위 한개의 태그가 필요한 이유는 js로 구현했을 때의 처음 React.createElement로 만든 친구 한개만을 반환하기 때문, -> 이후에 생성되는 태그들은 처음 생성된 element의 안에서 생성이 되고 최초 생성된 element만 반환이 되는 형식
