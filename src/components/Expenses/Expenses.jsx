@@ -5,9 +5,10 @@ import ExpenseItem from "./ExpenseItem";
 function Expenses({ items }) {
   return (
     <Card className="expenses">
-      {items.map((item) => {
+      {items.map((item, idx) => {
         return (
           <ExpenseItem
+            key={idx}
             title={item.title}
             amount={item.amount}
             date={item.date}
