@@ -17,10 +17,10 @@ function Expenses({ items }) {
         selected={filterYear}
         onChangeFilter={filterChangeHandler}
       />
-      {items.map((item, idx) => {
+      {items.map((item) => {
         return (
           <ExpenseItem
-            key={idx}
+            key={item.id}
             title={item.title}
             amount={item.amount}
             date={item.date}
